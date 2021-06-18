@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,313&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sonsie+One&display=swap" rel="stylesheet">
+    <title>訂單管理-管理模式</title>
+
+    <style>
+        @import url(css/main.css);
+        @import url(css/server_header.css);
+        @import url(css/server.css);
+    </style>
+
+</head>
+<body>
+
+    <div class="out">
+
+        <header>
+            <ul class="menu">
+                <li>
+                    <a href="_server_order.html">訂單管理</a>
+                </li>
+                <li>
+                    <a href="_server_product.html">商品管理</a>
+                </li>
+                <li>
+                    <a href="_server_employee.html">員工管理</a>
+                </li>
+                <li>
+                    <a href="_server_account.html">會員管理</a>
+                </li>
+                <li>
+                    <a href="_server_comment.html">評論管理</a>
+                </li>
+                <li>
+                    <a href="index.html">結束管理者模式</a>
+                </li>
+            </ul>
+        </header>
+        <h2>訂單管理 - 管理者模式</h2>
+        <hr />
+        <div id="server_list">
+
+            <div class="server_list">
+                <div class="server_list_left">
+                    <p>訂單編號</p>
+                    <p>訂購人</p>
+                    <p>訂購金額</p>
+                    <p>收件人</p>
+                    <p>地址</p>
+                    <p>聯絡電話</p>
+                    <p>付款方式</p>
+                </div>
+                <div class="server_list_right">
+                    <p>(訂單編號)</p>
+                    <p>(訂購人)</p>
+                    <p>(訂購金額)</p>
+                    <p>(收件人)</p>
+                    <p>(地址)</p>
+                    <p>(聯絡電話)</p>
+                    <p>(付款方式)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+     
+    <script>
+        function change_form_page(ID) {
+            document.getElementById('server_form_button').style.display = 'block';
+            document.getElementById('server_form_button').action = document.getElementById(ID).action;
+            document.getElementById('form_page').innerHTML = document.getElementById(ID).innerHTML;
+        }
+        function form_x() {
+            document.getElementById('server_form_button').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

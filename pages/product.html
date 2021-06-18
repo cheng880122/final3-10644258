@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+    <script src="js/index.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/product.css">
+    <title>歐美</title>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+
+    <script>
+        $(function() {
+  // This button will increment the value
+  $('.qtyplus').click(function(e) {
+    // Stop acting like a button
+    e.preventDefault();
+    // Get the field name
+    fieldName = $(this).attr('field');
+    // Get its current value
+    var currentVal = parseInt($('input[name=' + fieldName + ']').val());
+    // If is not undefined
+    if (!isNaN(currentVal)) {
+      // Increment
+      $('input[name=' + fieldName + ']').val(currentVal + 1);
+    } else {
+      // Otherwise put a 0 there
+      $('input[name=' + fieldName + ']').val(0);
+    }
+  });
+  // This button will decrement the value till 0
+  $(".qtyminus").click(function(e) {
+    // Stop acting like a button
+    e.preventDefault();
+    // Get the field name
+    fieldName = $(this).attr('field');
+    // Get its current value
+    var currentVal = parseInt($('input[name=' + fieldName + ']').val());
+    // If it isn't undefined or its greater than 0
+    if (!isNaN(currentVal) && currentVal > 0) {
+      // Decrement one
+      $('input[name=' + fieldName + ']').val(currentVal - 1);
+    } else {
+      // Otherwise put a 0 there
+      $('input[name=' + fieldName + ']').val(0);
+    }
+  });
+});
+    </script>
+
+</head>
+<body>
+    <header class="hd">
+        <div class="hd_body">
+          <a href="index.html"><img src="photo/logo.jpg"></a>
+          <div class="top_menu">
+    
+            <div class="hd_top">
+              <div class="search-box">
+                <input class="search-txt" type="text" name="" placeholder="Type to search">
+                <a class="search-btn" href="#">
+                  <i class="fa fa-search"></i>
+                </a>
+    
+              </div>
+              <a href="login.html" class="login-text">註冊/登入</a>
+              <a href="profile.html"><i class="fa fa-user"></i></a>
+              <a href="cart.html"><i class="fa fa-shopping-cart"></i></a>
+    
+            </div>
+            <div class="hd_menu">
+              <nav>
+                <ul class="menu">
+                  <li><a href="EU-US.html">歐美</a></li>
+                  <li><a href="JP-KO.html">日韓</a></li>
+                  <li><a href="CH.html">中文</a></li>
+                  <li><a href="aboutus.html">關於我們</a></li>
+                  <li><a href="index.html">首頁</a></li>   
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </header> 
+      
+      <section class="productbar">
+        <article class="product_img">
+            <img src="photo/eu_us/eu_us-1.jpg">
+        </article>    
+
+        <article class="product_text">
+            <div class="prod_txt">
+                <span class="music-class">Lyrical 抒情音樂</span>
+                <h2>AVA MAX / HEAVEN & HELL</h2>
+                <p class="product-price">
+                    <span class="old-price">$1350</span>
+                    &ensp;&ensp; $1148 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;數量:20
+                </p>
+                <p class="product-desc">
+                    &ensp;&ensp;&ensp;&ensp;期待多時，終於盼到Ava首張專輯《Heaven & Hell》問市！Ava堅持希望專輯充滿活力，散發高度凝聚力，讓每首歌聽起來都獨一無二，充滿節奏感的歌曲，沒有抒情曲式支撐，從律動中找到強而有力的能量，同時搜尋到些許的情緒化。個性坦率又神祕、強勢又脆弱、甜蜜又瘋狂，這就是Ava將專輯分為兩個部分的雙面向表態！
+                </p>
+            </br>
+
+                <form class="cart-form" method="POST" action="#">
+                    <div class="select-box">
+                        <input type='button' value='-' class='qtyminus' field='quantity' />
+
+                        <input type='text' name='quantity' value='1' class='qty' />
+
+                        <input type='button' value='+' class='qtyplus' field='quantity' />
+                    </div>    
+                </form>  
+                <span class="addtocart">
+                  <a href="cart.html" class="btn-cart">Add To Cart</a>
+                </span>
+                <div class="number3">
+                  <span class="span1">我要評分</span>
+                  <span class="span2">
+                    <div class="star">
+                      <input type="radio" name="item" id="item01" checked />
+                      <!--这里设置checked初始状态-->
+                      <label class="star-item" for="item01" title="很差"></label>
+                      <input type="radio" name="item" id="item02" />
+                      <label class="star-item" for="item02" title="差"></label>
+                      <input type="radio" name="item" id="item03" />
+                      <label class="star-item" for="item03" title="一般"></label>
+                      <input type="radio" name="item" id="item04" />
+                      <label class="star-item" for="item04" title="很好"></label>
+                      <input type="radio" name="item" id="item05" />
+                      <label class="star-item" for="item05" title="完美"></label>
+                    </div>
+                  </span>
+                  <form class="comment" action="#">
+                    <textarea cols="50" rows="5" name="comment-area"></textarea>
+                    <button>送出</button>
+                  </form>  
+                </div>    
+            </div>
+        </article>
+      </section>
+      
+
+</body>
+</html>

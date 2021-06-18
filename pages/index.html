@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Prism slider using canvas globalCompositeOperation" />
+		<meta name="keywords" content="prism, images, globalCompositeOperation, canvas, demo, web design, slider" />
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>HEAR YOUR VOICE</title>
+
+    <script type="text/javascript">
+      $(function() {
+          /* 按下GoTop按鈕時的事件 */
+          $('#gotop').click(function(){
+              $('html,body').animate({ scrollTop: 0 }, 'slow');   /* 返回到最頂上 */
+              return false;
+          });
+          
+          /* 偵測卷軸滑動時，往下滑超過400px就讓GoTop按鈕出現 */
+          $(window).scroll(function() {
+              if ( $(this).scrollTop() > 400){
+                  $('#gotop').fadeIn();
+              } else {
+                  $('#gotop').fadeOut();
+              }
+          });
+      });
+      </script> 
+
+    <style>  /*thumb-up icon*/
+        svg .thumbup {
+        text-align: center;
+        margin: auto;
+        width: 32px;
+        height: 32px;
+      }
+  
+      #icon-tumbs-up {
+        -webkit-animation-name: tumb-up;
+        animation-name: tumb-up;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-timing-function: ease-in-out;
+        animation-timing-function: ease-in-out;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+        -webkit-transform-origin: bottom;
+        transform-origin: bottom;
+      }
+  
+      @-webkit-keyframes tumb-up {
+        0% {
+          -webkit-transform: scale3d(1, 1, 1);
+          transform: scale3d(1, 1, 1);
+        }
+  
+        30% {
+          -webkit-transform: scale3d(1.25, 0.75, 1);
+          transform: scale3d(1.25, 0.75, 1);
+        }
+  
+        50% {
+          -webkit-transform: scale3d(1.15, 0.85, 1);
+          transform: scale3d(1.15, 0.85, 1);
+        }
+  
+        65% {
+          -webkit-transform: scale3d(0.95, 1.05, 1);
+          transform: scale3d(0.95, 1.05, 1);
+        }
+  
+        75% {
+          -webkit-transform: scale3d(1.05, 0.95, 1);
+          transform: scale3d(1.05, 0.95, 1);
+        }
+  
+        100% {
+          -webkit-transform: scale3d(1, 1, 1);
+          transform: scale3d(1, 1, 1);
+        }
+      }
+  
+      @keyframes tumb-up {
+        0% {
+          -webkit-transform: scale3d(1, 1, 1);
+          transform: scale3d(1, 1, 1);
+        }
+  
+        30% {
+          -webkit-transform: scale3d(1.25, 0.75, 1);
+          transform: scale3d(1.25, 0.75, 1);
+        }
+  
+        50% {
+          -webkit-transform: scale3d(1.15, 0.85, 1);
+          transform: scale3d(1.15, 0.85, 1);
+        }
+  
+        65% {
+          -webkit-transform: scale3d(0.95, 1.05, 1);
+          transform: scale3d(0.95, 1.05, 1);
+        }
+  
+        75% {
+          -webkit-transform: scale3d(1.05, 0.95, 1);
+          transform: scale3d(1.05, 0.95, 1);
+        }
+  
+        100% {
+          -webkit-transform: scale3d(1, 1, 1);
+          transform: scale3d(1, 1, 1);
+        }
+      }
+
+      /**/
+    svg .CD {
+      text-align: center;
+      margin: auto;
+      width: 100px;
+      height: 100px;
+      margin-top: 10px;
+    }
+
+    #icon-audio-disc {
+      -webkit-transform-origin: center;
+      transform-origin: center;
+      -webkit-animation: spinning 3s linear alternate infinite;
+      animation: spinning 3s linear alternate infinite;
+    }
+
+    @keyframes spinning {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    </style>
+
+</head>
+<body>
+    <header class="hd">
+        <div class="hd_body">
+          <a href="index.html"><img src="photo/logo.jpg" width="100px" height="100px"></a>
+          <div class="top_menu">
+    
+            <div class="hd_top">
+              <div class="search-box">
+                <input class="search-txt" type="text" name="" placeholder="Type to search">
+                <a class="search-btn" href="#">
+                  <i class="fa fa-search"></i>
+                </a>
+    
+              </div>
+              <a href="login.html" class="login-text">註冊/登入</a>
+              <a href="profile.html"><i class="fa fa-user"></i></a>
+              <a href="cart.html"><i class="fa fa-shopping-cart"></i></a>
+    
+            </div>
+            <div class="hd_menu">
+              <nav>
+                <ul class="menu">
+                  <li><a href="EU-US.html">歐美</a></li>
+                  <li><a href="JP-KO.html">日韓</a></li>
+                  <li><a href="CH.html">中文</a></li>
+                  <li><a href="aboutus.html">關於我們</a></li>   
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!--跑馬燈-->
+      <div class="marquee">
+        <marquee>歡迎光臨HEAR YOUR VOICE，跟著我們一起聆聽這個世界</marquee>
+        
+        <div class="top">
+          <a href="javascript:;" title="回上面">
+            <img src="photo/176.gif" width="50" height="50" alt="go-top" title="回上面" id="gotop">
+          </a>
+        </div>
+      </div>
+      <!-- 輪播圖片-->
+
+      <div class="container">
+        <div class="content">
+          <!-- Start Demo -->
+  
+          <div class="cache">
+            <!-- masks -->
+            <img src="http://tympanus.net/Tutorials/PrismEffectSlider/img/masks/cube-a.svg">
+            <img src="http://tympanus.net/Tutorials/PrismEffectSlider/img/masks/cube-b.svg">
+            <img src="ihttp://tympanus.net/Tutorials/PrismEffectSlider/img/masks/cube-c.svg">
+            <!-- photos -->
+            <a href="EU-US.html" title="123"><img src="eu_us/eu_us-5.jpg"></a>
+            <a href="EU-US.html" title="123"><img src="eu_us/eu_us-10.jpg"></a>
+            <a href="EU-US.html" title="123"><img src="eu_us/eu_us-2.jpg"></a>
+            <a href="EU-US.html" title="123"><img src="eu_us/eu_us-1.jpg"></a>
+            <a href="EU-US.html" title="123"><img src="eu_us/eu_us-12.jpg"></a>
+            <a href="EU-US.html" title="123"><img src="eu_us/eu_us-8.jpg"></a>
+            <a href="EU-US.html" title="123"><img src="eu_us/eu_us-6.jpg"></a>
+            <a href="EU-US.html" title="123"><img src="eu_us/eu_us-3.jpg"></a>
+          </div>
+  
+          <div class="wrapper">
+            <div class="prism-slider prism-slider--left">
+              <ul class="navigation"></ul>
+            </div>
+            <div class="copy copy--left">
+              <article>
+                <h2>Hear Your Voice</h2>
+                <p>
+                  歡迎來到Hear Your Voice，跟著我們一起聆聽這個世界
+                </p>
+                <p style="font-size: 16px;">
+                  來到Hear Your Voice尋找來自世界歌手的音樂。</br>
+                  音符是人類最美的文字，音樂是人類最美的語言。</br>
+                  有音樂，靈魂便不會寂莫，用美妙的音符，編出燦爛的人生樂章。
+                  
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- PROMO -->
+  <ins class="adsbygoogle"
+       style="display:inline-block;width:300px;height:600px"
+       data-ad-client="ca-pub-3948570594063971"
+       data-ad-slot="8530187641"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>              
+                </p>
+              </article>
+            </div>
+          </div>
+  
+          <!-- End Demo -->
+        </div>
+        
+      </div><!-- /container -->
+
+      <!-- 發燒推薦-->
+      <div id="hot">
+        <div data-content="發燒推薦" class="hr"></div>
+        <div class="hot_box">
+          <div class="hot_title">
+            發燒推薦 
+            <svg class="thumbup" version="1.1" id="icon-tumbs-up" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px" y="0px" width="32px" height="32px" viewBox="0 0 561 561" style="enable-background:new 0 0 561 561;"
+                xml:space="preserve">
+                <path d="M0,535.5h102v-306H0V535.5z M561,255c0-28.05-22.95-51-51-51H349.35l25.5-117.3c0-2.55,0-5.1,0-7.65
+                  c0-10.2-5.1-20.4-10.199-28.05L336.6,25.5L168.3,193.8c-10.2,7.65-15.3,20.4-15.3,35.7v255c0,28.05,22.95,51,51,51h229.5
+                  c20.4,0,38.25-12.75,45.9-30.6l76.5-181.051c2.55-5.1,2.55-12.75,2.55-17.85v-51H561C561,257.55,561,255,561,255z" />
+            </svg>
+    
+          </div>
+          <div class="productbox">
+            <div class="hot_product">
+              <a href="product.html"><img src="photo/eu_us/eu_us-1.jpg" class="img-fluid"></a>
+              <p>Heaven & Hell <font color="red">&ensp;$1,350</font></p>
+            </div>
+            <div class="hot_product">
+              <img src="photo/jp_ko/jp_ko-14.jpg" class="img-fluid">
+              <p>品名 <font color="red">&ensp;$1,530</font></p>
+            </div>
+            <div class="hot_product">
+              <img src="photo/eu_us/eu_us-4.jpg" class="img-fluid">
+              <p>品名 <font color="red">&ensp;$2,500</font></p>
+            </div>
+            <div class="hot_product">
+              <img src="photo/ch/ch-13.jpg" class="img-fluid">
+              <p>品名 <font color="red">&ensp;$1,800</font></p>
+            </div>
+            <div class="hot_product">
+              <img src="photo/jp_ko/jp_ko-11.jpg" class="img-fluid">
+              <p>品名 <font color="red">&ensp;$1,520</font></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!--eu/us-->
+      <div id="eu_us_hot">
+        <div data-content="eu_us" class="hr"></div>
+        <div class="hot_box">
+           <!--eu_us_hot_title=css.womanhot_title-->
+          <div class="eu_us_hot_title" style="border-bottom: #d8d7d7 2px solid; color: black;">
+            <div style="background-color:#d8d7d7 ; color: black;">歐美 音樂
+            <svg class="CD" id="icon-audio-disc" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32">
+              <path d="M32 2a30 30 0 1 0 30 30A30 30 0 0 0 32 2zm0 58a28 28 0 1 1 28-28 28 28 0 0 1-28 28z" />
+              <path d="M32 6A26 26 0 0 0 6 32h2A24 24 0 0 1 32 8zM32 56v2a26 26 0 0 0 26-26h-2a24 24 0 0 1-24 24z" />
+              <path d="M32 52v2a22 22 0 0 0 22-22h-2a20 20 0 0 1-20 20z" />
+              <path d="M46 32a14 14 0 1 0-14 14 14 14 0 0 0 14-14zm-26 0a12 12 0 1 1 12 12 12 12 0 0 1-12-12z" />
+              <path d="M41 32a9 9 0 1 0-9 9 9 9 0 0 0 9-9zm-16 0a7 7 0 1 1 7 7 7 7 0 0 1-7-7z" />
+              <path d="M36 32a4 4 0 1 0-4 4 4 4 0 0 0 4-4zm-6 0a2 2 0 1 1 2 2 2 2 0 0 1-2-2zM6 34h2v2H6z" />
+            </svg>
+            </div>
+          </div>
+          <div class="productbox">
+            <div class="hot_product">
+              <img src="photo/eu_us/eu_us-15.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+            <div class="hot_product">
+              <img src="photo/eu_us/eu_us-13.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+            <div class="hot_product">
+              <img src="photo/eu_us/eu_us-7.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+            <div class="hot_product">
+              <img src="photo/eu_us/eu_us-10.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+            <div class="hot_product">
+              <img src="photo/eu_us/eu_us-4.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!--jp/ko-->
+      <div id="jp_ko_hot">
+        <div data-content="man" class="hr"></div>
+        <div class="hot_box">
+          <div class="eu_us_hot_title" style="border-bottom: #a6a5a4 2px solid; color: white;">
+            <div style="background-color:#a6a5a4 ; color: white;">日韓 音樂
+            <svg class="CD" id="icon-audio-disc" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32">
+              <path d="M32 2a30 30 0 1 0 30 30A30 30 0 0 0 32 2zm0 58a28 28 0 1 1 28-28 28 28 0 0 1-28 28z" />
+              <path d="M32 6A26 26 0 0 0 6 32h2A24 24 0 0 1 32 8zM32 56v2a26 26 0 0 0 26-26h-2a24 24 0 0 1-24 24z" />
+              <path d="M32 52v2a22 22 0 0 0 22-22h-2a20 20 0 0 1-20 20z" />
+              <path d="M46 32a14 14 0 1 0-14 14 14 14 0 0 0 14-14zm-26 0a12 12 0 1 1 12 12 12 12 0 0 1-12-12z" />
+              <path d="M41 32a9 9 0 1 0-9 9 9 9 0 0 0 9-9zm-16 0a7 7 0 1 1 7 7 7 7 0 0 1-7-7z" />
+              <path d="M36 32a4 4 0 1 0-4 4 4 4 0 0 0 4-4zm-6 0a2 2 0 1 1 2 2 2 2 0 0 1-2-2zM6 34h2v2H6z" />
+            </svg>
+            </div>
+          </div>
+          <div class="productbox">
+            <div class="hot_product">
+              <img src="photo/jp_ko/jp_ko-2.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+            <div class="hot_product">
+              <img src="photo/jp_ko/jp_ko-5.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+            <div class="hot_product">
+              <img src="photo/jp_ko/jp_ko-15.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+            <div class="hot_product">
+              <img src="photo/jp_ko/jp_ko-11.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+            <div class="hot_product">
+              <img src="photo/jp_ko/jp_ko-1.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!--ch-->
+      <div id="ch_hot">
+        <div data-content="kids" class="hr"></div>
+        <div class="hot_box">
+          <div class="eu_us_hot_title" style="border-bottom:#3c3d3e 2px solid; color: white;">
+            <div style="background-color:#3c3d3e;  color: white;">中文 音樂
+            <svg class="CD" id="icon-audio-disc" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32">
+              <path d="M32 2a30 30 0 1 0 30 30A30 30 0 0 0 32 2zm0 58a28 28 0 1 1 28-28 28 28 0 0 1-28 28z" />
+              <path d="M32 6A26 26 0 0 0 6 32h2A24 24 0 0 1 32 8zM32 56v2a26 26 0 0 0 26-26h-2a24 24 0 0 1-24 24z" />
+              <path d="M32 52v2a22 22 0 0 0 22-22h-2a20 20 0 0 1-20 20z" />
+              <path d="M46 32a14 14 0 1 0-14 14 14 14 0 0 0 14-14zm-26 0a12 12 0 1 1 12 12 12 12 0 0 1-12-12z" />
+              <path d="M41 32a9 9 0 1 0-9 9 9 9 0 0 0 9-9zm-16 0a7 7 0 1 1 7 7 7 7 0 0 1-7-7z" />
+              <path d="M36 32a4 4 0 1 0-4 4 4 4 0 0 0 4-4zm-6 0a2 2 0 1 1 2 2 2 2 0 0 1-2-2zM6 34h2v2H6z" />
+            </svg>
+            </div>
+          </div>
+          <div class="productbox">
+            <div class="hot_product">
+              <img src="photo/ch/ch-3.jpg" class="img-fluid">
+              <p>品名 <font color="red">&ensp;$1,500</font></p>
+            </div>
+            <div class="hot_product">
+              <img src="photo/ch/ch-9.jpg" class="img-fluid">
+              <p>品名 <font color="red">&ensp;$1,570</font></p>
+            </div>
+            <div class="hot_product">
+              <img src="photo/ch/ch-1.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+            <div class="hot_product">
+              <img src="photo/ch/ch-12.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+            <div class="hot_product">
+              <img src="photo/ch/ch-8.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="new_product">
+        <div data-content="new" class="hr"></div>
+        <div class="hot_box">
+          <div class="eu_us_hot_title" style="border-bottom:#0c0d0e 2px solid; color: white;">
+            <div style="background-color:#0c0d0e; color: white;">
+              2021 最新專輯!!
+              <svg class="CD" id="icon-audio-disc" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32">
+                <path d="M32 2a30 30 0 1 0 30 30A30 30 0 0 0 32 2zm0 58a28 28 0 1 1 28-28 28 28 0 0 1-28 28z" />
+                <path d="M32 6A26 26 0 0 0 6 32h2A24 24 0 0 1 32 8zM32 56v2a26 26 0 0 0 26-26h-2a24 24 0 0 1-24 24z" />
+                <path d="M32 52v2a22 22 0 0 0 22-22h-2a20 20 0 0 1-20 20z" />
+                <path d="M46 32a14 14 0 1 0-14 14 14 14 0 0 0 14-14zm-26 0a12 12 0 1 1 12 12 12 12 0 0 1-12-12z" />
+                <path d="M41 32a9 9 0 1 0-9 9 9 9 0 0 0 9-9zm-16 0a7 7 0 1 1 7 7 7 7 0 0 1-7-7z" />
+                <path d="M36 32a4 4 0 1 0-4 4 4 4 0 0 0 4-4zm-6 0a2 2 0 1 1 2 2 2 2 0 0 1-2-2zM6 34h2v2H6z" />
+              </svg>
+            </div>
+          </div>
+          <div class="productbox">
+            <div class="hot_product">
+              <img src="photo/new-1.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+            <div class="hot_product">
+              <img src="photo/new-2.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+            <div class="hot_product">
+              <img src="photo/new-3.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+            <div class="hot_product">
+              <img src="photo/new-4.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+            <div class="hot_product">
+              <img src="photo/new-5.jpg" class="img-fluid">
+              <p>品名</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="">
+          <a name="contact"></a>
+          <div class="footer_img">
+            <a href="https://www.facebook.com/groups/3844539175656186/" target="_blank"><img src="photo/facebook.gif"></a>
+            <a href="https://www.instagram.com/hear_your_voice2021/" target="_blank"><img src="photo/instagram.gif"></a>
+            <a href="mailto:hearyourvoice@gmail.com"><img src="photo/mail.gif"></a>
+            
+          </div>
+          <p>
+            <font>與我們聯繫</font><br><br>
+            客服電話：03-1234567<br>
+            聯絡地址：桃園市中壢區中北路XX號<br>
+            服務時間：週一至週五&nbsp;09:00~17:00
+          </p>
+  
+        </div>
+      </footer>
+</body>
+<script>
+  /**
+ * The slideshow controller.
+ * Get settings and initialise PrismSlider for each layer,
+ * add controls and events, then call slideTo method on click.
+ * @return {Object} The set of public methods.
+ */
+var slideshow = (function(window, undefined) {
+
+'use strict';
+
+
+/**
+ * Enum navigation classes, attributes and
+ * provide navigation DOM element container.
+ */
+var navigation = {
+  selector: '.navigation',
+  element: null,
+  bullet: 'li',
+  attrs: {
+    active: 'active',
+    index: 'data-index'
+  }
+};
+
+/**
+ * Enum main element, sizes and provide
+ * main DOM element container.
+ * @type {Object}
+ */
+var container = {
+  selector: '.prism-slider',
+  element: null,
+  sizes: {
+    w: 1200,
+    h: 960
+  }
+};
+
+/**
+ * Set of images to be used.
+ * @type {Array}
+ */
+var slides = [
+  'photo/eu_us/eu_us-8.jpg',
+  'photo/jp_ko/jp_ko-10.jpg',
+  'photo/jp_ko/jp_ko-7.jpg',
+  'photo/eu_us/eu_us-1.jpg',
+  'photo/eu_us/eu_us-15.jpg',
+  'photo/ch/ch-4.jpg',
+  'photo/jp_ko/jp_ko-15.jpg',
+  'photo/ch/ch-8.jpg'
+];
+
+/**
+ * Set of masks with related effects.
+ * @type {Array}
+ */
+var masks = [
+  {
+    source: 'http://tympanus.net/Tutorials/PrismEffectSlider/img/masks/cube-a.svg',
+    effects: {
+      flip: 'Y',
+      rotate: 167 // degrees
+    }
+  },
+  {
+    source: 'http://tympanus.net/Tutorials/PrismEffectSlider/img/masks/cube-b.svg',
+    effects: {
+      flip: 'X',
+      rotate: 90 // degrees
+    }
+  },
+  {
+    source: 'http://tympanus.net/Tutorials/PrismEffectSlider/img/masks/cube-c.svg',
+    effects: {
+      flip: false,
+      rotate: 13 // degrees
+    }
+  }
+];
+
+/**
+ * Set global easing.
+ * @type {Function(currentTime)}
+ */
+var easing = Easing.easeInOutQuint;
+
+/**
+ * Set global duration.
+ * @type {Number}
+ */
+var duration = 1000;
+
+/**
+ * Container for PrismSlider instances.
+ * @type {Object}
+ */
+var instances = {};
+
+
+/**
+ * Init.
+ */
+function init() {
+
+  getContainer_();
+
+  initSlider_();
+
+  initPrism_();
+
+  addNavigation_();
+
+  addEvents_();
+}
+
+
+/**
+ * Get main container element, and store in container element.
+ */
+function getContainer_() {
+  container.element = document.querySelector(container.selector);
+}
+
+
+/**
+ * Init Slides.
+ * Create and initialise main background slider (first layer).
+ * Since we'll use this as main slider no mask is given.
+ */
+function initSlider_() {
+
+  instances.slider = new PrismSlider({
+    container: container,
+    slides: slides,
+    mask: false,
+    duration: duration,
+    easing: easing
+  });
+
+  // Initialise instance.
+  instances.slider.init();
+}
+
+
+/**
+ * Init Masks.
+ * Loop masks variable and create a new layer for each mask object.
+ */
+function initPrism_() {
+
+  masks.forEach(function(mask, i) {
+    // Generate reference name.
+    var name = 'mask_' + i;
+
+    instances[name] = new PrismSlider({
+      container: container,
+      slides: slides,
+      mask: mask, // Here is the mask object.
+      duration: duration,
+      easing: easing
+    });
+
+    // Initialise instance.
+    instances[name].init();
+  });
+}
+
+
+/**
+ * Add Navigation.
+ * Create a new bullet for each slide and add it to navigation (ul)
+ * with data-index reference.
+ */
+function addNavigation_() {
+
+  // Store navigation element.
+  navigation.element = document.querySelector(navigation.selector);
+
+  slides.forEach(function(slide, i) {
+
+    var bullet = document.createElement(navigation.bullet);
+
+    bullet.setAttribute(navigation.attrs.index, i);
+
+    // When it's first bullet set class as active.
+    if (i === 0) bullet.className = navigation.attrs.active;
+
+    navigation.element.appendChild(bullet);
+  });
+}
+
+
+/**
+ * Add Events.
+ * Bind click on bullets.
+ */
+function addEvents_() {
+  // Detect click on navigation elment (ul).
+  navigation.element.addEventListener('click', function(e) {
+
+    // Get clicked element.
+    var bullet = e.target;
+
+    // Detect if the clicked element is actually a bullet (li).
+    var isBullet = bullet.nodeName === navigation.bullet.toUpperCase();
+
+    // Check bullet and prevent action if animation is in progress.
+    if (isBullet && !instances.slider.isAnimated) {
+      // Remove active class from all bullets.
+      for (var i = 0; i < navigation.element.childNodes.length; i++) {
+        navigation.element.childNodes[i].className = '';
+      }
+      // Add active class to clicked bullet.
+      bullet.className = navigation.attrs.active;
+
+      // Get index from data attribute and convert string to number.
+      var index = Number(bullet.getAttribute(navigation.attrs.index));
+
+      // Call slideAllTo method with index.
+      slideAllTo_(index);
+    }
+
+  });
+}
+
+
+/**
+ * Call slideTo method of each instance.
+ * In order to sync sliding of all layers we'll loop through the
+ * instances object and call the slideTo method for each instance.
+ * @param {Number} index The index of the destination slide.
+ */
+function slideAllTo_(index) {
+  // Loop PrismSlider instances.
+  for (var key in instances) {
+    if (instances.hasOwnProperty(key)) {
+      // Call slideTo for current instance.
+      instances[key].slideTo(index);
+    }
+  }
+}
+
+
+return {
+  init: init
+};
+
+})(window);
+
+
+
+/**
+* Bootstrap slideshow plugin.
+* For demo purposes images are preloaded inside a div hidden with css,
+* the plugin initialisation is delayed through window.onload, in a real life
+* scenario would be better to preload images asynchronously with javascript.
+*/
+window.onload = slideshow.init;
+</script>
+<script src='http://tympanus.net/Tutorials/PrismEffectSlider/js/PrismSlider.js'></script>
+<script src='http://tympanus.net/Tutorials/PrismEffectSlider/js/utils/easing.js'></script>
+<script src='http://tympanus.net/Tutorials/PrismEffectSlider/js/utils/rAF.js'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="js/index.js"></script>
+</html>

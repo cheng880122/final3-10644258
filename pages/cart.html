@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/cart.js"> </script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>購物車</title>
+</head>
+
+<body>
+  <header class="hd">
+    <div class="hd_body">
+      <a href="index.html"><img src="photo/logo.jpg"></a>
+      <div class="top_menu">
+
+        <div class="hd_top">
+          <div class="search-box">
+            <input class="search-txt" type="text" name="" placeholder="Type to search">
+            <a class="search-btn" href="#">
+              <i class="fa fa-search"></i>
+            </a>
+
+          </div>
+          <a href="login.html" class="login-text">註冊/登入</a>
+          <a href="profile.html"><i class="fa fa-user"></i></a>
+          <a href="cart.html"><i class="fa fa-shopping-cart"></i></a>
+
+        </div>
+        <div class="hd_menu">
+          <nav>
+            <ul class="menu">
+              <li><a href="EU-US.html">歐美</a></li>
+              <li><a href="JP-KO.html">日韓</a></li>
+              <li><a href="CH.html">中文</a></li>
+              <li><a href="aboutus.html">關於我們</a></li>
+              <li><a href="index.html">首頁</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+
+
+  <div class="h1div">
+    <h1 class="carth1" style="margin-top: 140px;">購物車</h1>
+  </div>
+  
+  <div class="cartdiv" style="border: 1px solid; padding: 10px; margin: 30px;">
+
+    <table style="width: 100%; border-collapse: collapse; ">
+      <tbody id="carttbbody"><tr  style="border-bottom: 1px solid; ">
+        <td style="padding: 10px;"><img src="photo/ch/ch-10.jpg" height="300px" ></td>
+        <td>
+          <p style="font-size: larger;"><b>亞洲通吃 - 黃明志</b></p>
+        </td>
+        <td>數量:2
+        </td>
+        <td>單價 499 </td>
+        <td> <button style="background-color: rgb(255, 0, 0); color: aliceblue;"onclick="delMyRow(this)" id="bt1">刪除</button></td>
+      </tr>
+
+      <tr style="border-bottom: 1px solid; ">
+        <td style="padding: 10px;"><img src="photo/jp_ko/jp_ko-13.jpg" width="300px"></td>
+        <td>
+          <p style="font-size: larger;"><b> Late Night - Loco, GRAY</b></p>
+        </td>
+        <td>數量1</td>
+        <td>單價250</td>
+        <td> <button style="background-color: rgb(255, 0, 0); color: aliceblue;"onclick="delMyRow(this)" id="bt2" > 刪除</button></td>
+
+      </tr>
+      <tr   style="border-bottom: 1px solid; ">
+        <td style="padding: 10px;"><img src="photo/eu_us/eu_us-14.jpg" width="300px"></td>
+        <td>
+          <p style="font-size: larger;"><b> Eminem - Rap God</b></p>
+        </td>
+        <td> 數量:3</td>
+        <td>單價 350</td>
+        <td> <button style="background-color: rgb(255, 0, 0); color: aliceblue;" onclick="delMyRow(this)" id="bt3">刪除</button></td>
+      </tr></tbody>
+      
+
+    </table>
+    
+
+    <p style="text-align: right;"  id="total_sum" >總計: <script>total()</script>元</p>
+
+
+  </div>
+</body>
+
+</html>

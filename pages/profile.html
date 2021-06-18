@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+    <script src="js/index.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <title>會員中心</title>
+
+    <script type="text/javascript">
+        $(function() {
+            /* 按下GoTop按鈕時的事件 */
+            $('#gotop').click(function(){
+                $('html,body').animate({ scrollTop: 0 }, 'slow');   /* 返回到最頂上 */
+                return false;
+            });
+            
+            /* 偵測卷軸滑動時，往下滑超過400px就讓GoTop按鈕出現 */
+            $(window).scroll(function() {
+                if ( $(this).scrollTop() > 400){
+                    $('#gotop').fadeIn();
+                } else {
+                    $('#gotop').fadeOut();
+                }
+            });
+        });
+        </script>
+
+</head>
+<body>
+    <header class="hd">
+        <div class="hd_body">
+          <a href="index.html"><img src="photo/logo.jpg"></a>
+          <div class="top_menu">
+    
+            <div class="hd_top">
+              <div class="search-box">
+                <input class="search-txt" type="text" name="" placeholder="Type to search">
+                <a class="search-btn" href="#">
+                  <i class="fa fa-search"></i>
+                </a>
+    
+              </div>
+              <a href="login.html" class="login-text">註冊/登入</a>
+              <a href="profile.html"><i class="fa fa-user"></i></a>
+              <a href="cart.html"><i class="fa fa-shopping-cart"></i></a>
+    
+            </div>
+            <div class="hd_menu">
+              <nav>
+                <ul class="menu">
+                  <li><a href="EU-US.html">歐美</a></li>
+                  <li><a href="JP-KO.html">日韓</a></li>
+                  <li><a href="CH.html">中文</a></li>
+                  <li><a href="aboutus.html">關於我們</a></li>
+                  <li><a href="index.html">首頁</a></li>   
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="marquee">
+        <marquee>歡迎光臨HEAR YOUR VOICE，跟著我們一起聆聽這個世界</marquee>
+        
+        <div class="top">
+          <a href="javascript:;" title="回上面">
+            <img src="photo/176.gif" width="50" height="50" alt="go-top" title="回上面" id="gotop">
+          </a>
+        </div>
+      </div>
+
+      <section class="profile">
+        <article class="profile_update">
+            <h2 class="h2_1">更新會員資料</h2>
+            <div class="text_update">
+                <form action="" class="text_bar">
+                    <h2 class="h2_2" style="text-align: center;">會員資料</h2>
+                    <label for="name"><b>姓名 : </b></label>
+                    <input type="text" placeholder="請輸入姓名" name="name"><br>
+                    <label for="phone"><b>電話 : </b></label>
+                    <input type="text" placeholder="請輸入電話" name="phone"><br>
+                    <label for="address"><b>地址 : </b></label>
+                    <input type="text" placeholder="請輸入地址" name="address"><br>
+                    <label for="email"><b>帳號 : </b></label>
+                    <input type="text" placeholder="請輸入帳號" name="email"><br>
+                    <label for="password"><b>密碼 : </b></label>
+                    <input type="password" placeholder="請輸入密碼" name="password"><br>
+                    <button type="submit" class="text_btn">修改</button>
+                </form>
+            </div>
+        </article>    
+
+        <article class="profile_data">
+            
+            <div class="show_data">
+                <h2>購買紀錄</h2>
+                <table>
+                    <tr class="tr_1">
+                        <th>商品名稱</th>
+                        <th>訂購數量</th>
+                        <th>價錢</th>
+                    </tr>
+                    <tr>
+                        <th>Heaven & Hell</th>
+                        <th>3</th>
+                        <th>3444</th>
+                    </tr>
+                    <tr>
+                        <th>qq</th>
+                        <th>qq</th>
+                        <th>qq</th>
+                    </tr>
+                    <tr>
+                        <th>qq</th>
+                        <th>qq</th>
+                        <th>qq</th>
+                    </tr>
+                    <tr>
+                        <th>qq</th>
+                        <th>qq</th>
+                        <th>qq</th>
+                    </tr>
+                    <tr>
+                        <th>qq</th>
+                        <th>qq</th>
+                        <th>qq</th>
+                    </tr>
+                </table>
+            </div>
+
+            
+            <div class="show_comment">
+                <h2>評論紀錄</h2>
+                <table>
+                    <tr class="tr_1">
+                        <th>商品名稱</th>
+                        <th>評論內容</th>
+                        <th>給星</th>
+                    </tr>
+                    <tr>
+                        <th>Heaven & Hell</th>
+                        <th>快速收到商品</th>
+                        <th>5星</th>
+                    </tr>
+                    <tr>
+                        <th>Only The Young</th>
+                        <th>回復速度稍慢</th>
+                        <th>3星</th>
+                    </tr>
+                    <tr>
+                        <th>qq</th>
+                        <th>qq</th>
+                        <th>qq</th>
+                    </tr>
+                    <tr>
+                        <th>qq</th>
+                        <th>qq</th>
+                        <th>qq</th>
+                    </tr>
+                    <tr>
+                        <th>qq</th>
+                        <th>qq</th>
+                        <th>qq</th>
+                    </tr>
+                </table>
+            </div>
+        </article>
+      </section>
+
+
+</body>
+</html>
