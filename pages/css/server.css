@@ -1,0 +1,223 @@
+body {
+    background-color: #F2FFFF;
+}
+
+h2 {
+    font-size: 30px;
+    margin-bottom: 0px;
+    padding-left: 10%;
+}
+ 
+h3 {
+    margin: 2px;
+    font-size: 30px;
+    text-align: center;
+}
+
+#server_content {
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+.server_list {
+    padding-left: 30%;
+    font-size: 18px;
+}
+
+.server_list_left {
+    float: left;
+    width: 15%;
+}
+
+.server_list_right {
+    float: right;
+    width: 85%;
+    color: #737373;
+}
+
+.server_list_right p:first-child {
+    color: red;
+}
+
+.server_list_right input[type=text] {
+    height: 30px;
+    font-size: 20px;
+}
+
+.server_list_right textarea {
+    width: 450px;
+    height: 140px;
+    resize: none;
+    margin-top: 10px;
+}
+
+.server_form {
+    text-align: right;
+    padding-right: 10%;
+    height: 30%;
+}
+
+.server_form > a {
+    display: inline-block;
+    width: 80px;
+    height: 33px;
+    text-align: center;
+    line-height: 30px;
+    color: black;
+    text-decoration: none;
+    border-radius: 10px;
+    background-color: #6bdfff;
+    text-transform: uppercase;
+    transition: 0.7s;
+}
+
+.server_form > a:hover {
+    background-color: #FFFF8C;
+}
+
+.server_form_button {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+}  
+
+.server_form_button > div {
+    border: 10px solid #6bdfff;
+    background-color: #FFFFC9;
+    border-radius: 10px;
+    width: 750px;
+    height: 500px;
+    margin: 200px auto;
+}
+
+.server_form_button > div > a+div {
+    font-size: 22px;
+    text-align: center;
+    color: black;
+    display: block;
+    float: left;
+    padding-left: 10%;
+    padding-top: 1%;
+    width: 80%;
+    min-height: 390px;
+}
+
+.server_form_button > div > a+div p {
+    font-size: 22px;
+    margin: 4px;
+    padding-right: 5.5cm;
+}
+
+.server_form_button > div > a+div input {
+    font-size: 20px;
+    margin: 1px;
+    width: 300px;
+}
+
+.server_form_button > div > div+div {
+    float: left;
+    width: 87%;
+    text-align: right;
+}
+
+
+.server_form_button > div > div+div+div {
+    float: right;
+    width: 12%;
+    text-align: left;
+}
+
+.server_form_button p {
+    display: inline-block;
+}
+
+.server_button {
+    background: -webkit-linear-gradient(left top,#00F5F5,#008080);
+    background: -o-linear-gradient(bottom right,#00F5F5,#008080);
+    background: -moz-linear-gradient(bottom right,#00F5F5,#008080);
+    background: linear-gradient(to bottom right,#00F5F5,#008080);
+    display: inline-block;
+    text-decoration: none;
+    padding: 7px 24px;
+    background-color: #00BDBD;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    transition: 1.5s;
+}
+
+.server_button:hover {
+    cursor: pointer;
+    box-shadow: 0 0 5px #82FFFF, 0 0 25px #82FFFF, 0 0 50px #82FFFF, 0 0 50px #82FFFF;
+}
+
+.server_button:active {
+    position: relative;
+    top: 1px;
+}
+
+.server_X {
+    float: right;
+    border-radius: 7px;
+    background-color: white;
+    border: 1px solid #BABABA;
+    margin-right: 5px;
+    margin-top: 5px;
+    display: inline-block;
+    display: block;
+    cursor: pointer;
+    width: 16px;
+    height: 20px;
+    text-align: center;
+    text-decoration: none;
+    padding: 8px 10px;
+    font-size: 25px;
+    color: #A1A1A1;
+    font-weight: bold;
+    line-height: 20px;
+    text-transform: uppercase;
+    transition: 1s;
+}
+
+.server_X:hover {
+    background: #BABABA;
+    color: white;
+} 
+
+.server_X:active {
+    position: relative;
+    top: 1px;
+}
+
+.sendbutton {
+    background: -webkit-linear-gradient(left top,#00F5F5,#008080);
+    background: -o-linear-gradient(bottom right,#00F5F5,#008080);
+    background: -moz-linear-gradient(bottom right,#00F5F5,#008080);
+    background: linear-gradient(to bottom right,#00F5F5,#008080);
+    display: inline-block;
+    text-decoration: none;
+    padding: 7px 24px;
+    background-color: #00BDBD;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    transition: 1.5s;
+}
+
+.sendbutton:hover {
+    cursor: pointer;
+    box-shadow: 0 0 5px #82FFFF, 0 0 25px #82FFFF, 0 0 50px #82FFFF, 0 0 50px #82FFFF;
+}
+
+.sendbutton:active {
+    position: relative;
+    top: 1px;
+}

@@ -1,0 +1,154 @@
+.profile {
+    width: 100%;
+    height: 1000px;
+    margin-bottom: 25px;
+}
+
+.profile_update {
+    float: left;
+}
+
+.profile_update .h2_1 {
+    margin-left: 80%;
+    font-weight: bolder;
+    font-size: 30px;
+    text-align: center;
+    width: 250px;
+}
+
+form {
+    border: 2px solid #3c3d3e;
+    border-radius: 10px;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+form h2, form label {
+    text-align: center;
+    font-weight: bolder;
+    color: black;
+    margin-bottom: 5%;
+}
+
+form label {
+    margin-left: 3%;
+}
+
+form input {
+    font-size: 18px;
+    color: black;
+}
+
+.text_bar {
+    position: absolute;
+    width: 390px;
+    height: 440px;
+    margin-left: 10%;
+    background-color: #D0D0D0;
+    float: left;
+}
+
+input[type=text], input[type=password] {
+    width: 270px;
+    height: 30px;
+    margin: 0px 0 20px 0;
+    border:2px solid #3c3d3e;
+    margin-left: 4%;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #eee;
+    outline: none;
+}
+
+.text_btn {
+    background-color: #3c3d3e;
+    color: white;
+    padding: 0 20px;
+    text-decoration: none;
+    line-height: 40px;
+    border-radius: 10px;;
+    margin-right: 5px;
+    display: block;
+    border: none;
+    text-transform: uppercase;
+    transition: 1s;
+    width: 110px;
+    height: 40px;
+    font-size: 25px;
+    margin-left: 34%;
+    
+} 
+
+.text_btn:hover {
+    background-color: #D8D7D7;
+    border: 2px solid #3c3d3e;
+    cursor: pointer;
+    color: black;
+    box-shadow: 0 0 5px #D0D0D0, 0 0 25px #D0D0D0, 0 0 50px #D0D0D0, 0 0 50px #D0D0D0;
+}
+
+.text_btn:active {
+    transform: translate(5px);
+}
+
+.profile_data {
+    width: 650px;
+    height: 550px;
+    float: right;
+    border-radius: 10px;
+    margin: 17px 47px 17px 0px;
+    margin-right: 7%;
+    margin-bottom: 70%;
+}
+
+.show_data, .show_comment {
+    width: 600px;
+    height: 350px;
+    margin: 20px 20px 0px 20px;
+    text-align: center;
+    border: 2px solid #3c3d3e;
+    background-color: #D0D0D0;
+}
+
+.show_data {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.show_comment {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.profile_data table {
+    width: 550px;
+    height: 200px;
+    font-size: 19px;
+    margin: 0px 0px 0px 25px;
+    border-top: 2px solid;
+    border-left: 2px solid;
+    border-right: 2px solid;
+    border-color: #3c3d3e;
+}
+
+.profile_data th {
+    font-weight: bolder;
+    font-size: 20px;
+    text-align: center;
+    border-bottom: 2px solid;
+    border-color: #3c3d3e;    
+}
+
+.profile_data .tr_1 {
+    background-color: #4F4F4F;
+    color: #eee;
+}
+
+.profile_data td {
+    background-color: #D0D0D0;  
+    border-bottom: 2px solid;
+    border-color: #3c3d3e;
+    height: 23px;  
+}
+

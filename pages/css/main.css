@@ -1,0 +1,9 @@
+body {
+    font-family: 微軟正黑體;
+    font-weight: bolder;
+}
+
+.out {
+    position: relative;
+    margin: 0 auto;
+}
